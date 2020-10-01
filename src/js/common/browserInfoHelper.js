@@ -10,8 +10,8 @@ export const resetDeviceIpString = () => {
   deviceIpString = "";
 };
 
-export const getDeviceLocalIPAsString = () => {
-  return new Promise((resolve, reject) => {
+export const getDeviceLocalIPAsString = () => 
+  new Promise((resolve, reject) => {
     if (deviceIpString) {
       resolve(deviceIpString);
     }
@@ -51,21 +51,14 @@ export const getDeviceLocalIPAsString = () => {
             reject("CREATE_CONNECTION_ERROR");
       });
   });
-};
 
-export const getBrowserPluginsAsString = () => {
-  return Array.from(globalsUtil.getNavigator().plugins, plugin => plugin && plugin.name)
+export const getBrowserPluginsAsString = () => 
+  Array.from(globalsUtil.getNavigator().plugins, plugin => plugin && plugin.name)
     .filter((name) => name)
     .join(",");
-};
 
-const validateAndGetScreenDetail = (value) => {
-  if (isNaN(value)) {
-    return null;
-  } else {
-    return value;
-  }
-};
+const validateAndGetScreenDetail = (value) =>
+  isNaN(value) ? null : value;
 
 const getFormattedOffset = () => {
     // Date().toString() is in format like "Wed Sep 30 2020 23:11:02 GMT+0100 (British Summer Time)"
